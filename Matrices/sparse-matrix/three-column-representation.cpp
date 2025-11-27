@@ -9,10 +9,10 @@ int main() {
     int rows = 7, columns = 5;
     int totalOfElements = 10;
 
-    int* pr = new int[totalOfElements + 1], 
+    int 
+    *pr = new int[totalOfElements + 1], 
     *pc = new int[totalOfElements + 1], 
     *pv = new int[totalOfElements + 1];
-
 
     pr[0] = rows;
     pc[0] = columns;
@@ -62,14 +62,32 @@ int main() {
     cout << "| Rows: " << pr[0] << "| Columns: " << pc[0] << "|" << endl;
     cout << "---------------------------------" << endl;
 
-    for (int i = 1; i < totalOfElements; i++) {
+    for (int i = 1; i <= totalOfElements; i++) {
         cout << "(" << pr[i] << "," << pc[i] << "): " << pv[i] << endl;
     }
 
-    for (int i = 1; i < rows; i++) {
-        for(int j = 1; j < columns; j++) {
+    cout << "\n\n" << endl;
 
+    for (int i = 1; i <= pr[0]; i++) {
+        for (int j = 1; j <= pc[0]; j++) {
+            int x = -1;
+
+            for (int px = 1; px <= totalOfElements; px++) {
+                if (pr[px] != i || pc[px] != j) {
+                    continue;
+                }
+
+                x = px;
+            }
+
+            if ( x == -1 ) {
+                cout << " 0 ";
+            } else {
+                cout << " " << pv[x] << " ";
+            }
         }
+
+        cout << "\n\n" << endl;
     }
 
     return 0;
